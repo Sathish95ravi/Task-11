@@ -1,0 +1,188 @@
+1.Access Modifiers:-
+          There are four types of Access modifiers in Java
+           Public, Private, Default and Protected
+Public Access Modifiers:-
+      The public access modifier is specified using the keyword public. 
+
+      The public access modifier has the widest scope among all other access modifiers.
+      Classes, methods, or data members that are declared as public are accessible from everywhere in the program. 
+
+Private Access Modifiers:-
+      The private access modifier is specified using the keyword private.
+      Any other class of the same package will not be able to access these members.
+      Top-level classes or interfaces can not be declared as private 
+      
+Default Access Modifiers:-
+      When no access modifier is specified for a class, method, or data.
+      Default modifiers are accessible only within the same package.
+
+Protected Access Modifiers:-
+      The protected access modifier is specified using the keyword protected.
+      The methods or data members declared as protected are accessible within the same package or subclasses in different packages.
+      
+
+
+2.Exception                                                                         Error
+                                                                             
+It can be classified into unchecked and checked exceptions.                 It is classified as an unchecked type.
+
+It belongs to the class ‘java.lang.Exception’.                              It belongs to the class ‘java.lang.error’
+
+It can be recovered from.                                                   It can’t be recovered from.
+
+It can occur at runtime as well as compile time.                            It can't occur at compile time.
+
+
+3.Checked Exception                                                              Unchecked Exception
+
+These exceptions can be handled at the compilation time.                  These exceptions occur at runtime.
+
+It is a sub-class of the exception class.                                 These kinds of exceptions can’t be caught or handled during compilation time.   
+
+The JVM requires that the exception be caught and handled.                This is because the exceptions are generated due to the mistakes in the program.    
+
+
+4.Java Program for Exception:-
+                   
+
+import java.io.*;
+  
+class Divide {
+    public static void main (String[] args) {
+      int a=5;
+      int b=0;
+        try{
+          System.out.println(a/b);
+        }
+      catch(ArithmeticException e){
+        System.out.println(e);
+      }
+    }
+}                                
+
+5.ArrayIndexOutOfBoundException:-
+
+public class ArrayIndexOutOfBoundException {  
+  
+    public static void main(String[] args) {  
+ String[] arr = {"Ajith","Vijay","Vishal","Arya"};   
+                                      
+          
+        for(int i=0;i<=arr.length;i++) {       
+  
+
+             System.out.println(arr[i]);      
+    
+        }  
+  
+    }  
+  
+}  
+ String Index of BoundException:-
+               public class StringIndexOutOfBoundsExceptionExample {  
+    public static void main(String args[]) {  
+        String s = "example";  
+        String substring = s.substring(2, 8);  
+    }  
+}  
+
+
+6.Invalid password Exception:-
+          import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+class AuthenticationException extends Exception {
+ 
+ public AuthenticationException(String message) {
+  
+  super(message);
+ }
+}
+
+public class AuthenticationExc {
+
+ public static void main(String[] args) {
+
+  InputStreamReader isr = new InputStreamReader(System.in);
+  BufferedReader br = new BufferedReader(isr);
+  String pwd;
+  
+  try {
+   
+   System.out.print("Enter password :: ");
+   pwd = br.readLine();
+   
+   if(!pwd.equals("123")) 
+    throw new AuthenticationException("Incorrect password\nType correct password");
+   else
+    System.out.println("Welcome User !!!");
+   
+  } 
+  catch (IOException e) {
+   e.printStackTrace();
+  } 
+  catch (AuthenticationException a) {
+   a.printStackTrace();
+  }
+  System.out.println("BYE BYE");
+ }
+}
+
+7.Invalid Age Exception:-
+             
+import java.util.Scanner;
+
+class AgeException extends Exception {
+ 
+ public AgeException(String str) {
+  System.out.println(str);
+ }
+}
+public class AgeExc {
+
+ public static void main(String[] args) {
+  Scanner s = new Scanner(System.in);
+  System.out.print("Enter ur age :: ");
+  int age = s.nextInt();
+  
+  try {
+   if(age < 18) 
+    throw new AgeException("Invalid age");
+   else
+    System.out.println("Valid age");
+  }
+  catch (AgeException a) {
+   System.out.println(a);
+  }
+ }
+}
+
+8.File Not Found Exception:-
+   import java.io.*;  
+ 
+public class FileNotFoundExceptionExample1   
+{  
+    public static void main(String[] args)   
+    {  
+          
+         FileReader fileReader = new FileReader("Test.txt");  
+          
+         BufferedReader bufferReader = new BufferedReader(fileReader);  
+       
+         String fileData = null;  
+          
+         while ((fileData = bufferReader.readLine()) != null)   
+         {  
+             System.out.println(fileData);  
+         }  
+        
+         try {  
+            bufferReader.close();  
+        } catch (IOException e) {  
+            e.printStackTrace();  
+        }  
+    }  
+}  
+                                                                          
+                        
